@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piyush Sharma - Machine learning Internship</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .resume {
+            width: 1000px; /* Increased width */
+            margin: 20px auto;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Layout */
+        .resume-container {
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .sidebar {
+            flex: 0 0 35%; /* Increased sidebar width */
+            background-color: #2c3e50;
+            color: white;
+            padding: 30px;
+        }
+        
+        .main-content {
+            flex: 0 0 65%; /* Adjusted main content width */
+            padding: 30px;
+        }
+        
+        /* Typography */
+        h1 {
+            font-size: 2.5rem; /* Larger font size */
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 25px 0 15px 0; /* Increased top margin */
+            color: #2c3e50;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 8px;
+        }
+        
+        h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #7f8c8d;
+        }
+        
+        p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar h1 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .sidebar h2 {
+            color: white;
+            border-bottom: 2px solid #e74c3c;
+            margin-top: 30px;
+        }
+        
+        .job-title-header {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        
+        .contact-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.2s;
+        }
+        
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            margin-right: 15px;
+            width: 20px;
+            text-align: center;
+            color: #e74c3c;
+        }
+        
+        .skills-list, .languages-list, .interests-list {
+            list-style-type: none;
+        }
+        
+        .skills-list li, .languages-list li, .interests-list li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .skills-list li:before, .languages-list li:before, .interests-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+        
+        .language-level {
+            font-style: italic;
+            opacity: 0.8;
+            margin-left: 5px;
+            font-size: 0.9rem;
+        }
+        
+        /* Main Content Styles */
+        .section-title {
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .section-title:after {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #e74c3c;
+            margin-top: 5px;
+        }
+        
+        .job-experience, .education-item, .project-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+        
+        .job-title, .project-title {
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .job-title span:first-child, .project-title span:first-child {
+            font-size: 1.1rem;
+            color: #2c3e50;
+        }
+        
+        .job-title span:last-child {
+            font-weight: normal;
+            color: #e74c3c;
+        }
+        
+        .job-company {
+            font-style: italic;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        
+        .university-name, .degree-title {
+            color: #000000; /* Changed to black */
+        }
+        
+        .batch {
+            color: #7f8c8d;
+            margin-top: 5px;
+            font-size: 0.95rem;
+        }
+        
+        .job-duties, .project-details {
+            list-style-type: none;
+            margin-top: 8px;
+        }
+        
+        .job-duties li, .project-details li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .job-duties li:before, .project-details li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .why-me-list {
+            list-style-type: none;
+        }
+        
+        .why-me-list li {
+            margin-bottom: 18px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .why-me-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .certification-item {
+            margin-bottom: 15px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-left: 3px solid #e74c3c;
+            border-radius: 5px;
+        }
+        
+        /* Additional aesthetic enhancements */
+        .linkedin-link, .github-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        
+        .linkedin-link:hover, .github-link:hover {
+            color: #e74c3c;
+        }
+        
+        .professional-summary {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+            border-left: 3px solid #e74c3c;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            .resume {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume">
+        <div class="resume-container">
+            <div class="sidebar">
+                <h1>PIYUSH</h1>
+                <h1>SHARMA</h1>
+                <p class="job-title-header">MACHINE LEARNING ENGINEER</p>
+                
+                <h2>CONTACT</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📱</span>
+                        <span>097720 60027</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <span>piyushsharma@jklu.edu.in</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>Jaipur, Rajasthan 302026</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🔗</span>
+                        <span><a href="https://www.linkedin.com/in/piyush-sharma-71793927a/" class="linkedin-link">LinkedIn Profile</a></span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">💻</span>
+                        <span><a href="https://github.com/piyushsharma1903" class="github-link">GitHub/Portfolio</a></span>
+                    </div>
+                </div>
+                
+                <h2>SKILLS</h2>
+                <ul class="skills-list">
+                    <li>Machine Learning (Supervised & Unsupervised)</li>
+                    <li>Self-Supervised Learning</li>
+                    <li>Python, TensorFlow, PyTorch</li>
+                    <li>Natural Language Processing (NLP)</li>
+                    <li>Chatbot Development</li>
+                    <li>Data Processing & Model Fine-tuning</li>
+                    <li>Web Scraping & Data Collection</li>
+                    <li>Optimization Techniques</li>
+                    <li>Face Recognition & Computer Vision</li>
+                    <li>AI-Driven Content Creation</li>
+                </ul>
+                
+                <h2>LANGUAGES</h2>
+                <ul class="languages-list">
+                    <li>English <span class="language-level">(Fluent)</span></li>
+                    <li>German <span class="language-level">(Intermediate)</span></li>
+                    <li>Hindi <span class="language-level">(Native)</span></li>
+                </ul>
+                
+                <h2>INTERESTS</h2>
+                <ul class="interests-list">
+                    <li>AI Art & Creative AI</li>
+                    <li>Sports Analytics (F1 & Football)</li>
+                    <li>Jazz & Traditional Pop Music</li>
+                </ul>
+            </div>
+            
+            <div class="main-content">
+                <h2 class="section-title">OBJECTIVE</h2>
+                <div class="professional-summary">
+                    <p>Passionate and innovative aspiring Machine Learning Engineer eager to contribute to AI-driven solutions. Enthusiastic about leveraging cutting-edge AI advancements and developing creative, impactful projects that push technological boundaries.</p>
+                </div>
+                
+                <h2 class="section-title">EDUCATION</h2>
+                <div class="education-item">
+                    <div class="job-title">
+                        <span class="university-name">JK Laksmipath University, Jaipur</span>
+                    </div>
+                    <div class="job-company degree-title">Bachelor of Technology in Computer Science Engineering (AI & ML)</div>
+                    <div class="batch">2023-2027</div>
+                </div>
+                
+                <h2 class="section-title">EXPERIENCE & PROJECTS</h2>
+                <div class="project-item">
+                    <div class="project-title">
+                        <span>F1 Chatbot Development</span>
+                    </div>
+                    <ul class="project-details">
+                        <li>Built an engaging chatbot for Formula 1 fans using Retrieval-Augmented Generation (RAG).</li>
+                        <li>Processed a dataset of 15,000+ F1 commentary snippets for enhanced responses.</li>
+                        <li>Explored self-supervised learning to improve chatbot interactions dynamically.</li>
+                    </ul>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-title">
+                        <span>Ticket Booking App with Face Authentication</span>
+                    </div>
+                    <ul class="project-details">
+                        <li>Developed an application enabling ticket purchases via facial recognition.</li>
+                        <li>Implemented ticket resale functionality with AI-based fraud detection.</li>
+                        <li>Integrated a smooth UI/UX experience to enhance usability.</li>
+                    </ul>
+                </div>
+                
+                <div class="project-item">
+                    <div class="project-title">
+                        <span>Cab Pooling Service for College Students</span>
+                    </div>
+                    <ul class="project-details">
+                        <li>Created a cost-effective cab-sharing platform to reduce transportation expenses.</li>
+                        <li>Designed an intuitive booking system tailored to student needs.</li>
+                    </ul>
+                </div>
+                
+                <h2 class="section-title">WHY ME?</h2>
+                <ul class="why-me-list">
+                    <li><strong>Passion for AI:</strong> Constantly exploring how AI reshapes industries and finding creative ways to use it.</li>
+                    <li><strong>Hands-on Experience:</strong> Implemented real-world ML applications, bridging the gap between theory and practice.</li>
+                    <li><strong>Market Awareness:</strong> Understands current AI trends and how to make technology user-friendly.</li>
+                    <li><strong>Innovative Thinking:</strong> Goes beyond conventional AI applications to craft unique, impactful solutions.</li>
+                </ul>
+                
+                <h2 class="section-title">CERTIFICATIONS & COURSES</h2>
+                <ul class="project-details">
+                    <li>Machine Learning Fundamentals – [Krish Naik]</li>
+                    <li>Optimization Techniques (Ongoing)</li>
+                    <li>Deep Learning Specialization – [MIT 6.S191]</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
